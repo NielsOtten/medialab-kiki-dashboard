@@ -1,6 +1,24 @@
 
 @import '../../shared-styles/variables';
 
-.paragraph + .paragraph {
-  padding-top: $padding;
+.filterList {
+  padding-bottom: 40px;
+  border-bottom: 1px solid #dbdbdd;
+}
+
+.filter {
+  background-color: #fffeff;
+  display: inline;
+  margin: 10px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
