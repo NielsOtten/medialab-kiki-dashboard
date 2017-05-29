@@ -115,14 +115,14 @@ header {
     font-size: 18px;
     border-bottom: 1px solid #dbdbdd;
 
-    &.active {
-      a:before {
-        background-color: red;
-      }
-    }
-
     a {
       position: relative;
+
+      &.active {
+        &:before {
+          background-color: red;
+        }
+      }
 
       &:before {
         background-color: #e0dee1;
