@@ -6,17 +6,33 @@ import styles from './styles.scss';
 function App({ children }) {
   return (
     <div>
-      <i className={styles.logo} />
-      <ul className={styles.nav}>
-        <li className={styles.navItem}>
-          <Link className={styles.link} to="/">Home</Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link className={styles.link} to="/tools">Tools</Link>
-        </li>
-      </ul>
-      <div className={styles.content}>
-        {children}
+      <header>
+        <div className={styles.header}>
+          <div className={[styles.nav, styles.logo].join(' ')}>
+            <span>Dashboard Kiki</span>
+          </div>
+          <div className={styles.logout}>
+            <span>Sign Out</span>
+          </div>
+          <div className={styles.user}>
+            <span className={styles.username}>
+              <img src="" alt="profile image"/> John Doe
+            </span>
+          </div>
+        </div>
+      </header>
+      <div className={styles.container}>
+        <aside className={styles.nav}>
+          <li className={styles.navItem}>
+            <Link className={styles.link} to="/">Home</Link>
+          </li>
+          <li className={styles.navItem}>
+            <Link className={styles.link} to="/tools">Tools</Link>
+          </li>
+        </aside>
+        <div className={styles.content}>
+          {children}
+        </div>
       </div>
     </div>
   );
