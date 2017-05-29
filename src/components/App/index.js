@@ -5,10 +5,10 @@ import styles from './styles.scss';
 
 function App({ children }) {
   return (
-    <div>
+    <div style={{height: '100%'}}>
       <header>
         <div className={styles.header}>
-          <div className={[styles.nav, styles.logo].join(' ')}>
+          <div className={styles.logo}>
             <span>Dashboard</span>
           </div>
           <div className={styles.logout}>

@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.container {
+  height: 100%;
+}
+
 header {
   border-bottom: 2px solid #be1a19;
 }
@@ -35,10 +39,14 @@ header {
   }
 }
 
-.nav, .content, .user, .logout {
+.nav, .content, .user, .logout, .logo {
   display: table-cell;
-  vertical-align: middle;
   width: auto;
+}
+
+.content {
+  background-color: #f4f2f5;
+  padding: 40px;
 }
 
 .user, .logout {
@@ -88,6 +96,44 @@ header {
   height: 100px;
 }
 
-.nav {
+.nav, .logo {
   width: 300px;
+}
+
+.nav {
+  border-right: 2px solid #dbdbdd;
+  height: 100%;
+  position: relative;
+
+  .navItem {
+    padding-left: 100px;
+    list-style: none;
+    height: 100px;
+    vertical-align: middle;
+    line-height: 100px;
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 1px solid #dbdbdd;
+
+    &.active {
+      a:before {
+        background-color: red;
+      }
+    }
+
+    a {
+      position: relative;
+
+      &:before {
+        background-color: #e0dee1;
+        content: " ";
+        width: 29px;
+        height: 29px;
+        position: absolute;
+        left: -40px;
+        top: 0;
+        border-radius: 100%;
+      }
+    }
+  }
 }

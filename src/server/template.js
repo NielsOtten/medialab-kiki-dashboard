@@ -21,7 +21,7 @@ export default vo => `
   </head>
 
   <body>
-    <div id="root"><div>${vo.root}</div></div>
+    <div id="root" style="height:100%;"><div>${vo.root}</div></div>
     <script src="${vo.jsBundle}"></script>
   </body>
 
