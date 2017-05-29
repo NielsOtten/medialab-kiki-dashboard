@@ -5,4 +5,8 @@
 module.exports = {
   reactHotLoader: true,
   debug: false,
+  modifyWebpackConfig: (baseConfig, options) => {
+    // modify baseConfig based on the options
+    return baseConfig;
+  }
 };
