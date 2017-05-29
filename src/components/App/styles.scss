@@ -7,7 +7,7 @@
 }
 
 header {
-  border-bottom: 1px solid #be1a19;
+  border-bottom: 2px solid #be1a19;
 }
 
 .header {
@@ -15,8 +15,10 @@ header {
   color: #fffeff;
 
   .logo {
-    border-right: 1px solid #be1a19;
+    border-right: 2px solid #be1a19;
     position: relative;
+    font-weight: bold;
+    font-size: 20px;
 
     span {
       text-align: center;
@@ -79,7 +81,7 @@ header {
 .logout {
   float: right;
   width: 100px;
-  border-left: 1px solid #be1a19;
+  border-left: 2px solid #be1a19;
 }
 
 .logo {
@@ -87,5 +89,5 @@ header {
 }
 
 .nav {
-  width: 200px;
+  width: 300px;
 }

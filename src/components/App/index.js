@@ -9,7 +9,7 @@ function App({ children }) {
       <header>
         <div className={styles.header}>
           <div className={[styles.nav, styles.logo].join(' ')}>
-            <span>Dashboard Kiki</span>
+            <span>Dashboard</span>
           </div>
           <div className={styles.logout}>
             <span>Sign Out</span>
