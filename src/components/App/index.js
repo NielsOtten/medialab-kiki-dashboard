@@ -16,7 +16,7 @@ function App({ children }) {
           </div>
           <div className={styles.user}>
             <span className={styles.username}>
-              <img src="" alt="profile image"/> John Doe
+              <img src={require('../../images/john_doe.png')} alt="profile image"/> John Doe
             </span>
           </div>
         </div>
