@@ -7,7 +7,11 @@ const Schema = mongoose.Schema({
   },
   targetText: {
     type: String
-  }
+  },
+  timestamp: {
+    type: Date,
+    default: () => new Date(),
+  },
 });
 
 export default mongoose.model('Target', Schema);

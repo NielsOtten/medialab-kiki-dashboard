@@ -11,6 +11,7 @@ import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import match from 'react-router/lib/match';
 import template from './template';
 import routes from '../routes';
+import Target from '../models/Target';
 
 const clientAssets = require(KYT.ASSETS_MANIFEST); // eslint-disable-line import/no-dynamic-require
 const port = process.env.PORT || parseInt(KYT.SERVER_PORT, 10);
@@ -35,20 +36,32 @@ app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
 
 // Return targets
 app.get('/targets', (req, res) => {
-  res.json({
-    targets: [
-      {
-        totalCoins: 10
-      },
-      {
-        totalCoins: 20
-      },
-      {
-        totalCoins: 30
-      }
-    ]
+  //TODO: FIX SORTING.
+  Target.find().sort({timestamp: 1}).limit(3).exec()
+    .then((targets) => {
+      res.json({ targets });
+      res.end();
+    })
+    .catch((err) => {
+      res.json(err);
+      res.end();
+    })
+});
+
+app.post('/targets', (req, res) => {
+  const target = new Target({
+    totalCoins: req.body.value,
+    targetText: `Verzamel ${req.body.value} ${req.body.target}`
   });
-  res.end();
+  target.save()
+    .then(newTarget => {
+      res.json({ target: newTarget });
+      res.end();
+    })
+    .catch(err => {
+      res.json(err);
+      res.end();
+    });
 });
 
 // Setup server side routing.
