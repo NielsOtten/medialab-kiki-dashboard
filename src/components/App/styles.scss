@@ -39,14 +39,20 @@ header {
   }
 }
 
-.nav, .content, .user, .logout, .logo {
+.nav, .content {
+  display: block;
+  box-sizing: border-box;
+}
+
+.user, .logout, .logo {
   display: table-cell;
-  width: auto;
 }
 
 .content {
   background-color: #f4f2f5;
-  padding: 40px;
+  float: left;
+  width: 80%;
+  height: 100%;
 }
 
 .user, .logout {
@@ -97,13 +103,14 @@ header {
 }
 
 .nav, .logo {
-  width: 300px;
+  width: 20%;
 }
 
 .nav {
   border-right: 2px solid #dbdbdd;
   height: 100%;
   position: relative;
+  float: left;
 
   .navItem {
     padding-left: 100px;

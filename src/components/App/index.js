@@ -6,7 +6,7 @@ import styles from './styles.scss';
 
 function App({ children }) {
   return (
-    <div style={{height: '100%'}}>
+    <div style={{height: '100%', top: 0, position: 'absolute', left: 0, right: 0, bottom: 0, width: '100%'}}>
       <header>
         <div className={styles.header}>
           <div className={styles.logo}>
@@ -28,7 +28,7 @@ function App({ children }) {
             <IndexLink className={styles.link} to="/" activeClassName={styles.active}>Home</IndexLink>
           </li>
           <li className={styles.navItem}>
-            <IndexLink className={styles.link} to="/tools" activeClassName={styles.active}>Achievements</IndexLink>
+            <IndexLink className={styles.link} to="/achievements" activeClassName={styles.active}>Achievements</IndexLink>
           </li>
         </aside>
         <div className={styles.content}>

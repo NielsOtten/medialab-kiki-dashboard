@@ -21,7 +21,7 @@ class Home extends React.Component {
     ];
 
     return(
-      <div>
+      <div className={styles.wrapper}>
         <ul className={styles.filterList}>
           <li className={styles.filter}>Totaal</li>
           <li className={styles.filter}>Per maand</li>
