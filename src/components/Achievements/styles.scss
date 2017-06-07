@@ -131,3 +131,74 @@
     }
   }
 }
+
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #dfdfdf;
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.addAchievement {
+  position: absolute;
+  width: 600px;
+  background-color: #ffffff;
+  z-index: 9999999999;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  color: #9f9f9f;
+  padding: 20px;
+
+  .radios:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  h2 {
+    font-size: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #9f9f9f;
+  }
+
+  p {
+    font-size: 18px;
+    padding: 15px 0;
+  }
+
+  .value {
+    width: 100%;
+    border-radius: 6px;
+    border: solid 1px #9f9f9f;
+    padding: 5px 2px;
+  }
+
+  .submit {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3dab6e;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .radio {
+    float: left;
+    width: 33%;
+    box-sizing: border-box;
+    margin-top: 20px;
+
+    input {
+      margin-right: 8px;
+    }
+
+    label {
+      font-size: 14px;
+    }
+  }
+}
