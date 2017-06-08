@@ -37,7 +37,7 @@ app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
 // Return targets
 app.get('/targets', (req, res) => {
   //TODO: FIX SORTING.
-  Target.find().sort({timestamp: 1}).limit(3).exec()
+  Target.find().sort({timestamp: 1}).exec()
     .then((targets) => {
       res.json({ targets });
       res.end();
@@ -50,8 +50,9 @@ app.get('/targets', (req, res) => {
 
 app.post('/targets', (req, res) => {
   const target = new Target({
-    totalCoins: req.body.value,
-    targetText: `Verzamel ${req.body.value} ${req.body.target}`
+    title: `Verzamel ${req.body.value} ${req.body.target}`,
+    target: req.body.target,
+    value: req.body.value,
   });
   target.save()
     .then(newTarget => {

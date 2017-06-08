@@ -1,12 +1,22 @@
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema({
-  totalCoins: {
+  title: {
+    type: String,
+    required: true
+  },
+  target: {
+    type: String,
+    required: true
+  },
+  value: {
     type: Number,
     required: true
   },
-  targetText: {
-    type: String
+  progress: {
+    type: Number,
+    required: true,
+    default: 0,
   },
   timestamp: {
     type: Date,

@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
 class Achievement extends Component {
   render() {
+    const done = this.props.progress >= this.props.value ? styles.done : styles.notDone;
+
     return <li className={styles.achievement}>
       <img src="" alt=""/>
-      <h2 className={styles.title}>Jumpman</h2>
-      <span className={styles.gofor}>50 Jumps</span>
-      <span className={styles.progress}>Behaald</span>
-      <div className={styles.toDo}>
+      <h2 className={styles.title}>{this.props.title}</h2>
+      <span className={styles.gofor}>{`${this.props.value} ${this.props.target}`}</span>
+      <span className={[styles.progress, done].join(' ')}>{this.props.progress >= this.props.value ? 'Behaald' : 'Nog niet behaald'}</span>
+      <div className={[styles.toDo, done].join(' ')}>
         <div className={styles.reached}>
-          <p className={styles.title}>Reached</p>
-          <p className={styles.target}>50</p>
+          <p className={styles.title}>Behaald</p>
+          <p className={styles.target}>{this.props.progress}</p>
         </div>
         <div className={styles.left}>
-          <p className={styles.title}>Left</p>
-          <p className={styles.target}>0</p>
+          <p className={styles.title}>Te gaan</p>
+          <p className={styles.target}>{this.props.value - this.props.progress}</p>
         </div>
       </div>
     </li>;
   }
 }
+
+Achievement.propTypes = {
+  title: PropTypes.string.isRequired,
+  target: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  progress: PropTypes.number.isRequired,
+};
 
 export default Achievement;
