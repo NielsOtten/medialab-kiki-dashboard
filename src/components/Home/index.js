@@ -1,12 +1,29 @@
 
 import React from 'react';
-import Measure from 'react-measure';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import styles from './styles.scss';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      graphWidth: 0,
+    };
+
+    this.onResize = this.onResize.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+  }
+
+  onResize() {
+    if (this.wrapper && this.wrapper !== null) {
+      const graphWidth = this.wrapper.clientWidth - 20;
+      this.setState({ graphWidth  });
+    }
   }
 
   render() {
@@ -31,48 +48,56 @@ class Home extends React.Component {
         </ul>
         <div className={styles.graphs}>
           <div className={styles.graph}>
-            <LineChart width={400} height={300} data={data}
-                       margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-              <XAxis dataKey="name"/>
-              <YAxis/>
-              <Tooltip/>
-              <Legend />
-              <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
+            <div className={styles.graphWrapper}>
+              <LineChart className={styles.lineChart} width={400} height={300} data={data}
+                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <Tooltip/>
+                <Legend />
+                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
+                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+              </LineChart>
+            </div>
           </div>
           <div className={styles.graph}>
-            <LineChart width={400} height={300} data={data}
-                       margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-              <XAxis dataKey="name"/>
-              <YAxis/>
-              <Tooltip/>
-              <Legend />
-              <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
+            <div className={styles.graphWrapper}>
+              <LineChart className={styles.lineChart} width={400} height={300} data={data}
+                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <Tooltip/>
+                <Legend />
+                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
+                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+              </LineChart>
+            </div>
           </div>
           <div className={styles.graph}>
-            <LineChart width={400} height={300} data={data}
-                       margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-              <XAxis dataKey="name"/>
-              <YAxis/>
-              <Tooltip/>
-              <Legend />
-              <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
+            <div className={styles.graphWrapper}>
+              <LineChart className={styles.lineChart} width={400} height={300} data={data}
+                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <Tooltip/>
+                <Legend />
+                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
+                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+              </LineChart>
+            </div>
           </div>
           <div className={styles.graph}>
-            <LineChart width={400} height={300} data={data}
-                       margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-              <XAxis dataKey="name"/>
-              <YAxis/>
-              <Tooltip/>
-              <Legend />
-              <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-            </LineChart>
+            <div className={styles.graphWrapper}>
+              <LineChart className={styles.lineChart} width={400} height={300} data={data}
+                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <Tooltip/>
+                <Legend />
+                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
+                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+              </LineChart>
+            </div>
           </div>
         </div>
       </div>

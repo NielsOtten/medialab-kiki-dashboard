@@ -31,10 +31,19 @@
   float: left;
   width: 50%;
   padding: 5%;
-  background-color: #fffeff;
+  box-sizing: border-box;
+}
+
+.graphWrapper {
+  background-color: #ffffff;
+  padding: 10px;
   box-sizing: border-box;
 }
 
 .wrapper {
   padding: 40px;
+}
+
+.lineChart {
+  margin: 0 auto;
 }
