@@ -13,6 +13,7 @@
     "fetch-everywhere": "^1.0.5",
     "flow-bin": "^0.46.0",
     "kyt": "^0.5.3",
+    "moment": "^2.18.1",
     "mongoose": "^4.9.9",
     "prop-types": "^15.5.10",
     "react": "^15.3.0",
@@ -30,13 +31,13 @@
     "dev": "kyt dev",
     "build": "kyt build",
     "start": "node build/server/main.js",
-    "proto": "kyt proto",
     "test": "kyt test",
     "test-watch": "kyt test -- --watch",
     "test-coverage": "kyt test -- --coverage",
-    "lint": "npm run lint-script && npm run lint-style",
-    "lint-script": "kyt lint-script",
+    "lint": "kyt lint",
     "lint-style": "kyt lint-style",
-    "kyt:help": "kyt --help"
+    "proto": "kyt proto",
+    "kyt:help": "kyt --help",
+    "postinstall": "npm run build"
   }
 }
