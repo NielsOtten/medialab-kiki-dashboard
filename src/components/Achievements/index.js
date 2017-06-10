@@ -48,6 +48,7 @@ class Achievements extends Component {
     })
       .then((data) => {
         this.getAchievements();
+        this.clickHandler();
         console.log(data);
       })
       .catch(err => {
