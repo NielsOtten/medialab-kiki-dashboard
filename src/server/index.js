@@ -5,6 +5,7 @@ import path from 'path';
 import React from 'react';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import moment from 'moment';
 import { renderToString } from 'react-dom/server';
 import RouterContext from 'react-router/lib/RouterContext';
 import createMemoryHistory from 'react-router/lib/createMemoryHistory';
@@ -12,6 +13,7 @@ import match from 'react-router/lib/match';
 import template from './template';
 import routes from '../routes';
 import Target from '../models/Target';
+import Game from '../models/Game';
 
 const clientAssets = require(KYT.ASSETS_MANIFEST); // eslint-disable-line import/no-dynamic-require
 const port = process.env.PORT || parseInt(KYT.SERVER_PORT, 10);
@@ -33,6 +35,39 @@ app.use(bodyParser.json());
 
 // Setup the public directory so that we can server static assets.
 app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
+
+app.get('/games', async (req, res) => {
+  const date = await getLastDate(req.query.date);
+  Game.find({ timestamp: { '$gte': new Date(), '$lt': date }})
+    .then((games) => {
+      res.json({games});
+      res.end();
+    })
+    .catch(err => {
+      res.json(err);
+      res.end();
+    })
+});
+
+async function getLastDate(date) {
+  switch (date) {
+    case 'total':
+      return moment().subtract(30,'d').toDate();
+      break;
+    case 'month':
+      return moment().subtract(30,'d').toDate();
+      break;
+    case 'week':
+      return moment().subtract(7,'d').toDate();
+      break;
+    case 'day':
+      return moment().subtract(1,'d').toDate();
+      break;
+    default:
+      return moment().toDate();
+      break;
+  }
+}
 
 // Return targets
 app.get('/targets', (req, res) => {

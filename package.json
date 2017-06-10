@@ -6,7 +6,9 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-kyt-react": "0.2.0",
+    "babel-preset-stage-1": "^6.24.1",
     "body-parser": "^1.17.2",
     "compression": "1.6.2",
     "express": "4.14.0",
