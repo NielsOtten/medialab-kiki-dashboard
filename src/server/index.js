@@ -38,7 +38,8 @@ app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
 
 app.get('/games', async (req, res) => {
   const date = await getLastDate(req.query.date);
-  Game.find({ timestamp: { '$gte': new Date(), '$lt': date }})
+  console.log({'$lte': new Date(), '$gte': date}, req.query.date);
+  Game.find({ timestamp: { '$lte': new Date(), '$gte': date }})
     .then((games) => {
       res.json({games});
       res.end();
@@ -47,6 +48,16 @@ app.get('/games', async (req, res) => {
       res.json(err);
       res.end();
     })
+});
+
+app.post('/games', (req, res) => {
+  console.log(req);
+  const body = req.body;
+  const { playTime, coins } = body;
+  const newGame = new Game({ playTime, coins });
+  newGame.save();
+  // Target.find()
+  //   .then(targets => targets.filter((target) => {if(target.)}))
 });
 
 async function getLastDate(date) {

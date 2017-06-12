@@ -7,7 +7,6 @@ const Schema = mongoose.Schema({
   },
   totalJumps: {
     type: Number,
-    required: true
   },
   playTime: {
     type: Number,
@@ -15,7 +14,6 @@ const Schema = mongoose.Schema({
   },
   distance: {
     type: Number,
-    Required: true,
   },
   timestamp: {
     type: Date,
