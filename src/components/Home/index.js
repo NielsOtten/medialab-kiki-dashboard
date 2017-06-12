@@ -65,10 +65,19 @@ class Home extends React.Component {
                 <YAxis/>
                 <Tooltip/>
                 <Legend />
-                <Line type="monotone" dataKey="Munten" stroke="#8884d8" />
-                <Line type="monotone" dataKey="Sprongen" stroke="#82ca9d" />
-                <Line type="monotone" dataKey="Afstand" stroke="#82ca9d" />
                 <Line type="monotone" dataKey="Speeltijd" stroke="#82ca9d" />
+              </LineChart>
+            </div>
+          </div>
+          <div className={styles.graph}>
+            <div className={styles.graphWrapper}>
+              <LineChart className={styles.lineChart} width={400} height={300} data={this.state.games}
+                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <Tooltip/>
+                <Legend />
+                <Line type="monotone" dataKey="Munten" stroke="#82ca9d" />
               </LineChart>
             </div>
           </div>
