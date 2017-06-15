@@ -56,8 +56,11 @@ app.post('/games', (req, res) => {
   const { playTime, coins } = body;
   const newGame = new Game({ playTime, coins });
   newGame.save();
-  // Target.find()
-  //   .then(targets => targets.filter((target) => {if(target.)}))
+  Target.find()
+    .then(targets => targets.filter((target) => {if(target.value <= target.progress) return target}))
+    .then(validTargets => {
+      console.log(validTargets);
+    })
 });
 
 async function getLastDate(date) {
@@ -71,11 +74,8 @@ async function getLastDate(date) {
     case 'week':
       return moment().subtract(7,'d').toDate();
       break;
-    case 'day':
-      return moment().subtract(1,'d').toDate();
-      break;
     default:
-      return moment().toDate();
+      return moment().subtract(1,'d').toDate();
       break;
   }
 }
