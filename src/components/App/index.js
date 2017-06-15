@@ -10,10 +10,10 @@ function App({ children }) {
       <header>
         <div className={styles.header}>
           <div className={styles.logo}>
-            <span>Dashboard</span>
+            <span>Kiki Dashboard</span>
           </div>
           <div className={styles.logout}>
-            <span>Sign Out</span>
+            <span>Log uit</span>
           </div>
           <div className={styles.user}>
             <span className={styles.username}>
@@ -25,10 +25,10 @@ function App({ children }) {
       <div className={styles.container}>
         <aside className={styles.nav}>
           <li className={styles.navItem}>
-            <IndexLink className={styles.link} to="/" activeClassName={styles.active}>Home</IndexLink>
+            <IndexLink className={styles.link} to="/" activeClassName={styles.active}>Voortgang</IndexLink>
           </li>
           <li className={styles.navItem}>
-            <IndexLink className={styles.link} to="/achievements" activeClassName={styles.active}>Achievements</IndexLink>
+            <IndexLink className={styles.link} to="/achievements" activeClassName={styles.active}>Prestaties</IndexLink>
           </li>
         </aside>
         <div className={styles.content}>
