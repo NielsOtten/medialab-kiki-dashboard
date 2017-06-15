@@ -1,8 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import IndexLink from 'react-router/lib/Link';
-import { Link } from 'react-router';
+import NavItem from './NavItem.jsx';
 import styles from './styles.scss';
 
 function App({ children }) {
@@ -25,12 +24,8 @@ function App({ children }) {
       </header>
       <div className={styles.container}>
         <aside className={styles.nav}>
-          <li className={styles.navItem}>
-            <IndexLink className={styles.link} to="/" activeClassName={styles.active}>Voortgang</IndexLink>
-          </li>
-          <li className={styles.navItem}>
-            <Link className={styles.link} to="/achievements" activeClassName={styles.active}>Prestaties</Link>
-          </li>
+          <NavItem className={styles.link} icon='graph' to="/" activeClassName={styles.active} index={true}>Voortgang</NavItem>
+          <NavItem className={styles.link} icon='achievement' to="/achievements" activeClassName={styles.active}>Prestaties</NavItem>
         </aside>
         <div className={styles.content}>
           {children}

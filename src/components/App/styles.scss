@@ -118,6 +118,7 @@ header {
   background: #ffffff;
 
   .navItem {
+    position: relative;
     padding-left: 100px;
     list-style: none;
     height: 100px;
@@ -127,25 +128,23 @@ header {
     font-size: 18px;
     border-bottom: 1px solid #dbdbdd;
 
+    &.active {
+      svg {
+        fill: #be1a19;
+      }
+    }
+
+    svg {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 60px;
+    }
+
     a {
       position: relative;
-
-      &.active {
-        &:before {
-          background-color: red;
-        }
-      }
-
-      &:before {
-        background-color: #e0dee1;
-        content: " ";
-        width: 29px;
-        height: 29px;
-        position: absolute;
-        left: -40px;
-        top: 0;
-        border-radius: 100%;
-      }
     }
   }
 }
