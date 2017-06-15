@@ -1,7 +1,7 @@
 
 import React from 'react';
 import fetch from 'fetch-everywhere';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 import styles from './styles.scss';
 
 class Home extends React.Component {
@@ -10,7 +10,7 @@ class Home extends React.Component {
 
     this.state = {
       games: [],
-      graphWidth: 0,
+      graphWidth: null,
     };
 
     this.onResize = this.onResize.bind(this);
@@ -18,14 +18,13 @@ class Home extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.onResize);
-    this.onResize();
     this.clickHandler('total');
   }
 
   onResize() {
     if (this.wrapper && this.wrapper !== null) {
-      const graphWidth = this.wrapper.clientWidth - 20;
-      this.setState({ graphWidth  });
+      const graphWidth = this.wrapper.clientWidth - 30;
+      this.setState({ graphWidth });
     }
   }
 
@@ -47,6 +46,7 @@ class Home extends React.Component {
   };
 
   render() {
+    const graphWidth = (this.state.graphWidth == null && this.wrapper) ? this.wrapper.clientWidth : this.state.graphWidth;
     return(
       <div className={styles.wrapper}>
         <ul className={styles.filterList}>
@@ -58,27 +58,31 @@ class Home extends React.Component {
         </ul>
         <div className={styles.graphs}>
           <div className={styles.graph}>
-            <div className={styles.graphWrapper}>
-              <LineChart className={styles.lineChart} width={400} height={300} data={this.state.games}
-                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                <XAxis dataKey="name"/>
-                <YAxis/>
-                <Tooltip/>
-                <Legend />
-                <Line type="monotone" dataKey="Speeltijd" stroke="#82ca9d" />
-              </LineChart>
+            <div ref={(w) => this.wrapper = w} className={styles.graphWrapper}>
+              <ResponsiveContainer width={graphWidth} height={300}>
+                <LineChart className={styles.lineChart} data={this.state.games}
+                           margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                  <XAxis dataKey="name"/>
+                  <YAxis/>
+                  <Tooltip/>
+                  <Legend />
+                  <Line type="monotone" dataKey="Speeltijd" stroke="#82ca9d" />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </div>
           <div className={styles.graph}>
             <div className={styles.graphWrapper}>
-              <LineChart className={styles.lineChart} width={400} height={300} data={this.state.games}
-                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                <XAxis dataKey="name"/>
-                <YAxis/>
-                <Tooltip/>
-                <Legend />
-                <Line type="monotone" dataKey="Munten" stroke="#82ca9d" />
-              </LineChart>
+              <ResponsiveContainer width={graphWidth} height={300}>
+                <LineChart className={styles.lineChart} width={400} height={300} data={this.state.games}
+                           margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                  <XAxis dataKey="name"/>
+                  <YAxis/>
+                  <Tooltip/>
+                  <Legend />
+                  <Line type="monotone" dataKey="Munten" stroke="#82ca9d" />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </div>
