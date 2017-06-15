@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IndexLink from 'react-router/lib/Link';
+import { Link } from 'react-router';
 import styles from './styles.scss';
 
 function App({ children }) {
@@ -28,7 +29,7 @@ function App({ children }) {
             <IndexLink className={styles.link} to="/" activeClassName={styles.active}>Voortgang</IndexLink>
           </li>
           <li className={styles.navItem}>
-            <IndexLink className={styles.link} to="/achievements" activeClassName={styles.active}>Prestaties</IndexLink>
+            <Link className={styles.link} to="/achievements" activeClassName={styles.active}>Prestaties</Link>
           </li>
         </aside>
         <div className={styles.content}>

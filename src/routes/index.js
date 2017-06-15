@@ -23,8 +23,8 @@ const importAchievements = (nextState, cb) => {
 // We use `getComponent` to dynamically load routes.
 // https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md
 const routes = (
-  <Route path="/" component={App}>
-    <IndexRoute getComponent={importHome} />
+  <Route component={App}>
+    <Route path="/" getComponent={importHome} />
     <Route path="achievements" getComponent={importAchievements} />
   </Route>
 );
