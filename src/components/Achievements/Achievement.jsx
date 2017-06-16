@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import fetch from 'fetch-everywhere';
 import styles from './styles.scss';
 import SVG from '../../images/SVG.jsx';
 
 class Achievement extends Component {
   onDelete = (e) => {
-
+    fetch(`/targets/${this.props.id}`, {
+      method: 'DELETE',
+    })
+      .then(response => response.json())
+      .then((json) => {
+        this.props.afterDeletion();
+        console.log(json);
+      })
   };
 
   render() {
@@ -38,10 +46,12 @@ class Achievement extends Component {
 }
 
 Achievement.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   target: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
   progress: PropTypes.number.isRequired,
+  afterDeletion: PropTypes.func.isRequired,
 };
 
 export default Achievement;

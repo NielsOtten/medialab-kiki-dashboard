@@ -111,6 +111,19 @@ app.post('/targets', (req, res) => {
     });
 });
 
+app.delete('/targets/:id', (req, res) => {
+  Target.findOne({ _id: req.params.id })
+    .then((target) => target.remove())
+    .then(removed => {
+      res.json(removed);
+      res.end();
+    })
+    .catch((err) => {
+      res.json(err);
+      res.end();
+    })
+});
+
 // Setup server side routing.
 app.get('*', (request, response) => {
   const history = createMemoryHistory(request.originalUrl);

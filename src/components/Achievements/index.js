@@ -19,6 +19,7 @@ class Achievements extends Component {
     this.radioClickHandler = this.radioClickHandler.bind(this);
     this.valueChangeHandler = this.valueChangeHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
+    this.getAchievements = this.getAchievements.bind(this);
   }
 
   componentDidMount() {
@@ -67,10 +68,12 @@ class Achievements extends Component {
       .then((json) => {
         return json.targets.map(target => <Achievement
           key={target._id}
+          id={target._id}
           title={target.title}
           target={target.target}
           value={target.value}
-          progress={target.progress} />);
+          progress={target.progress}
+          afterDeletion={this.getAchievements}/>);
       })
       .then(achievements => {
         this.setState({ achievements });
