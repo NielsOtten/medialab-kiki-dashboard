@@ -47,6 +47,7 @@ app.get('/games', async (req, res) => {
         newGame._id = game._id;
         newGame.coins = game.coins;
         newGame.playTime = game.playTime;
+        newGame.totalJumps = game.totalJumps;
         newGame.timestamp = moment(game.timestamp).format('MM/DD/YY h:mm');
         return newGame;
       });

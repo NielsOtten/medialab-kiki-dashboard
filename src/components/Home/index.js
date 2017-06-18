@@ -75,6 +75,20 @@ class Home extends React.Component {
               </ResponsiveContainer>
             </div>
           </div>
+          <div className={styles.graph}>
+            <h2 className={styles.sprongen}>Sprongen</h2>
+            <div className={styles.graphWrapper}>
+              <ResponsiveContainer width={100+'%'} height={400}>
+                <LineChart className={styles.lineChart} data={this.state.games}
+                           margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                  <XAxis dataKey="name"/>
+                  <YAxis/>
+                  <Tooltip/>
+                  <Line type="monotone" dataKey="Sprongen" stroke="#82ca9d" />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
         </div>
       </div>
     );
