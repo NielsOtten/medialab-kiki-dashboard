@@ -71,7 +71,7 @@ app.post('/games', (req, res) => {
             value = playTime;
             break;
         }
-        target.progress = target.value + value > target.value ? target.value : value + target.value;
+        target.progress = target.progress + value > target.value ? target.value : value + target.progress;
         target.save();
       })
     })
