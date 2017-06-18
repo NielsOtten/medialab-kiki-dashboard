@@ -12,9 +12,6 @@ const Schema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  distance: {
-    type: Number,
-  },
   timestamp: {
     type: Date,
     default: () => new Date(),

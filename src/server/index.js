@@ -51,15 +51,29 @@ app.get('/games', async (req, res) => {
 });
 
 app.post('/games', (req, res) => {
-  console.log(req);
   const body = req.body;
-  const { playTime, coins } = body;
-  const newGame = new Game({ playTime, coins });
+  const { coins, playTime, totalJumps } = body;
+  const newGame = new Game({ playTime, coins, totalJumps });
   newGame.save();
   Target.find()
-    .then(targets => targets.filter((target) => {if(target.value <= target.progress) return target}))
+    .then(targets => targets.filter(target => target.progress <= target.value))
     .then(validTargets => {
-      console.log(validTargets);
+      validTargets.forEach((target) => {
+        let value = 0;
+        switch (target.target) {
+          case 'Munten':
+            value = coins;
+            break;
+          case 'Jumps':
+            value = totalJumps;
+            break;
+          case 'Speeltijd':
+            value = playTime;
+            break;
+        }
+        target.progress = target.value + value > target.value ? target.value : value + target.value;
+        target.save();
+      })
     })
 });
 
