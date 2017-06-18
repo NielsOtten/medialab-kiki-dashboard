@@ -41,6 +41,15 @@ app.get('/games', async (req, res) => {
   console.log({'$lte': new Date(), '$gte': date}, req.query.date);
   Game.find({ timestamp: { '$lte': new Date(), '$gte': date }})
     .then((games) => {
+      games = games.map((game) => {
+        console.log(game);
+        const newGame = Object.assign({}, game);
+        newGame._id = game._id;
+        newGame.coins = game.coins;
+        newGame.playTime = game.playTime;
+        newGame.timestamp = moment(game.timestamp).format('MM/DD/YY h:mm');
+        return newGame;
+      });
       res.json({games});
       res.end();
     })
