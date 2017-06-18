@@ -18,6 +18,18 @@ class Achievement extends Component {
 
   render() {
     const done = this.props.progress >= this.props.value ? styles.done : styles.notDone;
+    let icon = null;
+    switch (this.props.target) {
+      case 'Munten':
+        icon = <SVG className={styles.icon} src='munten'/>;
+        break;
+      case 'Speeltijd':
+        icon = <SVG className={styles.icon} src='speeltijd'/>;
+        break;
+      case 'Jumps':
+        icon = <SVG className={styles.icon} src='sprongen'/>;
+        break;
+    }
 
     return (
       <li className={styles.achievement}>
@@ -26,7 +38,7 @@ class Achievement extends Component {
             <SVG src='plus'/>
           </button>
         </span>
-        <img src="" alt=""/>
+        { icon }
         <h2 className={styles.title}>{this.props.title}</h2>
         <span className={styles.gofor}>{`${this.props.value} ${this.props.target}`}</span>
         <span className={[styles.progress, done].join(' ')}>{this.props.progress >= this.props.value ? 'Behaald' : 'Nog niet behaald'}</span>
