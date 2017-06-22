@@ -37,6 +37,7 @@ class Home extends React.Component {
   };
 
   render() {
+    const displayGraphs = this.state.games.length > 0;
     return(
       <div className={styles.wrapper}>
         <ul className={styles.filterList}>
@@ -46,7 +47,7 @@ class Home extends React.Component {
           <li className={styles.filter + ' ' + (this.state.active === 'day' ? styles.active : '')} onClick={this.clickHandler.bind(this, 'day')}>Per dag</li>
           <li className={styles.filter + ' ' + (this.state.active === 'today' ? styles.active : '')} onClick={this.clickHandler.bind(this, 'today')}>Vandaag</li>
         </ul>
-        <div ref={(w) => this.wrapper = w} className={styles.graphs}>
+        <div ref={(w) => this.wrapper = w} className={styles.graphs + ' ' + (displayGraphs ? styles.active : '')}>
           <div className={styles.graph}>
             <h2 className={styles.speeltijd}>Speeltijd</h2>
             <div className={styles.graphWrapper}>
@@ -90,6 +91,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+        <div className={styles.noResult}>Helaas, geen resultaten beschikbaar.</div>
       </div>
     );
   }

@@ -38,11 +38,9 @@ app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
 
 app.get('/games', async (req, res) => {
   const date = await getLastDate(req.query.date);
-  console.log({'$lte': new Date(), '$gte': date}, req.query.date);
   Game.find({ timestamp: { '$lte': new Date(), '$gte': date }})
     .then((games) => {
       games = games.map((game) => {
-        console.log(game);
         const newGame = Object.assign({}, game);
         newGame._id = game._id;
         newGame.coins = game.coins;
@@ -51,7 +49,7 @@ app.get('/games', async (req, res) => {
         newGame.timestamp = moment(game.timestamp).format('MM/DD/YY h:mm');
         return newGame;
       });
-      res.json({games});
+      res.json({ games: games});
       res.end();
     })
     .catch(err => {
