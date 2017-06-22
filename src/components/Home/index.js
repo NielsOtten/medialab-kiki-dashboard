@@ -91,7 +91,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <div className={styles.noResult}>Helaas, geen resultaten beschikbaar.</div>
+        {!displayGraphs ? <div className={styles.noResult}>Helaas, geen resultaten beschikbaar.</div> : ''}
       </div>
     );
   }
