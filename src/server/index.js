@@ -80,6 +80,7 @@ app.post('/games', (req, res) => {
             break;
         }
         target.progress = target.progress + value > target.value ? target.value : value + target.progress;
+        target.progress = target.progress > target.value ? target.value : target.progress;
         target.save();
       })
     })
